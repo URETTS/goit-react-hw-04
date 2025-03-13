@@ -1,6 +1,8 @@
-const ImageCard = ({ src, alt }) => {
+import React from "react";
+
+const ImageCard = ({ src, alt, onClick }) => {
   return (
-    <div>
+    <div onClick={onClick} style={{ cursor: "pointer" }}>
       <img src={src} alt={alt} />
     </div>
   );

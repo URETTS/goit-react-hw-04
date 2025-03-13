@@ -5,6 +5,11 @@ import ImageGallery from "./components/ImageGallery";
 import Loader from "./components/Loader";
 import ErrorMessage from "./components/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn";
+import ImageModal from "./components/ImageModal";
+import Modal from 'react-modal';
+
+Modal.setAppElement("#root");
+
 
 const App = () => {
     const [images, setImages] = useState([]);
@@ -12,6 +17,7 @@ const App = () => {
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
     const [query, setQuery] = useState("");
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const handleSearch = (newQuery) => {
         if (!newQuery.trim()) return;
@@ -28,7 +34,7 @@ const App = () => {
             const response = await axios.get("https://api.unsplash.com/search/photos", {
                 params: {
                     query: searchQuery,
-                    per_page: 16,
+                    per_page: 24,
                     page: currentPage,
                     client_id: "zJtwtnC_i3GAj7K0cudedkc__1neUQEIQPNqm2wsT0g",
                 },
@@ -51,9 +57,10 @@ const App = () => {
     return (
         <div>
             <SearchBar onSubmit={handleSearch} />
-            {error ? <ErrorMessage message={error} /> : <ImageGallery images={images} />}
+            {error ? <ErrorMessage message={error} /> : <ImageGallery images={images} onImageClick={setSelectedImage} />}
             {loading && <Loader />}
             {images.length > 0 && !loading && <LoadMoreBtn onClick={handleLoadMore} />}
+            {selectedImage && <ImageModal image={selectedImage} onClose={() => setSelectedImage(null)} />}
         </div>
     );
 };
