@@ -1,0 +1,34 @@
+.searchBar {
+    padding: 20px;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    padding: 5px;
+    width: 30%;
+}
+
+.searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBar input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
