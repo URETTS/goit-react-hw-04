@@ -12,7 +12,7 @@
     background: white;
     border-radius: 5px;
     padding: 5px;
-    width: 30%;
+    width: 40%;
 }
 
 .searchButton {
@@ -31,4 +31,20 @@
     border: none;
     outline: none;
     font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+.form {
+        width: 70%;
+    }
+}
+
+
+@media (max-width: 768px) {
+.searchBar input{
+    width: 100%;
+}
+.form{
+    width: 100%;
+}
 }
